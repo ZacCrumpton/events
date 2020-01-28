@@ -1,3 +1,69 @@
 body{
     background-color: slategray;
 }
+
+h2 {
+    padding: 14px 16px;
+}
+
+#piePage{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#pieFlex{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px;
+    min-height: 100%;
+}
+
+#pieSection{
+    width: 450px;
+    background-color: whitesmoke;
+
+
+}
+
+p {
+    padding-left: 20px;
+    border-bottom:1px solid slategray;
+}
+
+p.true{
+    color: green;
+}
+
+p.false {
+    color: maroon;
+}
+
+#hot {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: red;
+}
+
+#cold {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: lightskyblue;
+}
+
+#organic{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: lightgreen;
+}
+#notOrganic{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: maroon;
+    color: lightsteelblue
+}
+
+img{
+    max-width: 100%;
+    max-height: 400px;
+    justify-content: center;
+}
