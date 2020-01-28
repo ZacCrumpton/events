@@ -108,16 +108,16 @@ console.log('pies', pies)
 //nice big images
 //display all information in the pie objects
 
-const pieBuilder = () => {
+const pieBuilder = (monkeyButtArray) => {
     let domString = '';
-    for(let i = 0; i < pies.length; i++){
+    for(let i = 0; i < monkeyButtArray.length; i++){
         domString += `<article id="pieFlex">`
             domString += `<section id="pieSection">`
-                domString += `<h2>${pies[i].name}</h2>`;
-                domString += `<img src="${pies[i].imageUrl}">`;
-                domString += `<p>YOUR PRICE: $${pies[i].price}</p>`;
+                domString += `<h2>${monkeyButtArray[i].name}</h2>`;
+                domString += `<img src="${monkeyButtArray[i].imageUrl}">`;
+                domString += `<p>YOUR PRICE: $${monkeyButtArray[i].price}</p>`;
                 domString += `<p>HOW'S THE TEMP?!`
-            if (pies[i].isWarm === true) {
+            if (monkeyButtArray[i].isWarm === true) {
                 domString += `<p id="hot">Wow thats HoT</p>`;
             } else {
                 domString += `<p id="cold">Burrrr to cold for me</p>`;
@@ -125,20 +125,71 @@ const pieBuilder = () => {
 
             domString += `<p>IS THIS PIE ORGANIC??`
 
-            if (pies[i].isOrganic === true) {
+            if (monkeyButtArray[i].isOrganic === true) {
                 domString += `<p id="organic">You betcha, what a fesh taste!</p>`
             } else {
                 domString += `<p id="notOrganic">Nope, this is artificial</p>`
-            };  
-                domString += `<p>WHAT KIND OF CRUST?: ${pies[i].crust}</p>`;
-                domString += `<p>POPULAR ICECREAM FOR THIS PIE: ${pies[i].iceCream}</p>`;
-                domString += `<p>${pies[i].isAvailable}</p>`;
-                domString += `<p>TRY THIS DRINK WITH YOUR PIE: ${pies[i].drinkPairing}</p>`;
-                domString += `<p>RECOMMENDED BY: ${pies[i].instructor}</p>`
+            };   
+                domString += `<p>WHAT KIND OF CRUST?: ${monkeyButtArray[i].crust}</p>`;
+                domString += `<p>POPULAR ICECREAM FOR THIS PIE: ${monkeyButtArray[i].iceCream}</p>`;
+                domString += `<p>${monkeyButtArray[i].isAvailable}</p>`;
+                domString += `<p>TRY THIS DRINK WITH YOUR PIE: ${monkeyButtArray[i].drinkPairing}</p>`;
+                domString += `<p>RECOMMENDED BY: ${monkeyButtArray[i].instructor}</p>`
             domString += `</section>`
         domString += `</article>`
     }
     printToDom('piePage', domString)
 };
 
-pieBuilder();
+const zoesPies = () => {
+    console.log("GIMME A PIE");
+    const myPies = [] 
+    for(let i = 0; i < pies.length; i++) {
+    if(pies[i].instructor === 'Zoe') {
+        myPies.push(pies[i]);
+    }
+    pieBuilder(myPies);
+}
+}
+
+const marysPies = () => {
+    console.log("Gimme a pie");
+    const myPies = []
+    for(let i = 0; i < pies.length; i++) {
+    if(pies[i].instructor === 'Mary'){
+        myPies.push(pies[i])
+    }
+    pieBuilder(myPies);
+    }
+    
+}
+
+const findMyPies = (e) => {
+    console.log(e.target.id)
+    const buttonId = e.target.id;
+    if(buttonId === 'All'){
+        pieBuilder(pies);
+    } else {
+    const myPies = []
+    for(let i = 0; i < pies.length; i++) {
+    if(pies[i].instructor === buttonId){
+        myPies.push(pies[i])
+    }
+    pieBuilder(myPies);
+    }
+}
+};
+
+const event = () => {
+    document.getElementById('Zoe').addEventListener('click', findMyPies);
+    document.getElementById('Mary').addEventListener('click', findMyPies);
+    document.getElementById('Luke').addEventListener('click', findMyPies);
+    document.getElementById('Zac').addEventListener('click', findMyPies);
+    document.getElementById('All').addEventListener('click', findMyPies);
+};
+const init = () => {
+    pieBuilder(pies);
+    event();
+}
+
+init();
